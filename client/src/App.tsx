@@ -3,40 +3,42 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import FamuShell from "./components/FamuShell";
+import { SelectionProvider } from "./contexts/SelectionContext";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 import Home from "./pages/Home";
+import Portfolio from "./pages/Portfolio";
+import ProjectDetail from "./pages/ProjectDetail";
+import Selection from "./pages/Selection";
+import ServiceDetail from "./pages/ServiceDetail";
+import Services from "./pages/Services";
 
 function Router() {
-  // make sure to consider if you need authentication for certain routes
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
+  return <FamuShell><Switch>
+    <Route path="/" component={Home} />
+    <Route path="/servicos" component={Services} />
+    <Route path="/servicos/:slug" component={ServiceDetail} />
+    <Route path="/portfolio" component={Portfolio} />
+    <Route path="/portfolio/:slug" component={ProjectDetail} />
+    <Route path="/sobre" component={About} />
+    <Route path="/contacto" component={Contact} />
+    <Route path="/selecao" component={Selection} />
+    <Route path="/404" component={NotFound} />
+    <Route component={NotFound} />
+  </Switch></FamuShell>;
 }
 
-// NOTE: About Theme
-// - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
-//   to keep consistent foreground/background color across components
-// - If you want to make theme switchable, pass `switchable` ThemeProvider and use `useTheme` hook
-
 function App() {
-  return (
-    <ErrorBoundary>
-      <ThemeProvider
-        defaultTheme="light"
-        // switchable
-      >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
-      </ThemeProvider>
-    </ErrorBoundary>
-  );
+  return <ErrorBoundary>
+    <ThemeProvider defaultTheme="dark">
+      <TooltipProvider>
+        <Toaster />
+        <SelectionProvider><Router /></SelectionProvider>
+      </TooltipProvider>
+    </ThemeProvider>
+  </ErrorBoundary>;
 }
 
 export default App;

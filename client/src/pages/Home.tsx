@@ -1,33 +1,44 @@
-import { useAuth } from "@/_core/hooks/useAuth";
-import { Button } from "@/components/ui/button";
-import { Loader2 } from "lucide-react";
-import { Streamdown } from 'streamdown';
+import { ArrowDownRight, ArrowUpRight, Check, ChevronRight, Circle, Layers3, MousePointer2, MoveUpRight, Sparkles } from "lucide-react";
+import { Link } from "wouter";
+import { BarChartArt, LineChartArt, MiniDashboard, PresentationStack, ProcessLine } from "@/components/ProjectVisual";
+import { ProjectCard, SectionIntro, ServiceCard } from "@/components/FamuCards";
+import { useSelection } from "@/contexts/SelectionContext";
+import { b2bServices, b2bTitle, brandPill, credibilityLine, finalCtaText, finalCtaTitle, heroDescription, heroHeadline, professionalServices, professionalTitle, processSteps, projects, services } from "@/lib/famu-data";
 
-/**
- * All content in this page are only for example, replace with your own feature implementation
- * When building pages, remember your instructions in Frontend Workflow, Frontend Best Practices, Design Guide and Common Pitfalls
- */
 export default function Home() {
-  // The useAuth hook provides authentication state.
-  // To implement login/logout, call logout(), or start login from an event
-  // handler: onClick={() => startLogin()} (imported from "@/const"). Never call
-  // startLogin() during render (no href={startLogin()}) — it mints a one-time
-  // nonce cookie and must run only at the moment of navigation.
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const { toggle, isSelected } = useSelection();
+  const featuredServices = services.slice(0, 4);
+  const featuredProjects = projects.slice(0, 4);
 
-  // If theme is switchable in App.tsx, we can implement theme toggling like this:
-  // const { theme, toggleTheme } = useTheme();
+  return <div className="home-page">
+    <section className="hero-section">
+      <div className="hero-grid-lines" />
+      <div className="container hero-inner">
+        <div className="hero-copy"><span className="eyebrow hero-eyebrow"><i className="live-dot" /> {brandPill}</span><h1>{heroHeadline.split(" ").slice(0, 2).join(" ")}<br /><em>{heroHeadline.split(" ").slice(2).join(" ")}</em></h1><p>{heroDescription}</p><div className="hero-actions"><Link href="/servicos" className="button button-primary">Explorar soluções <ArrowUpRight size={17} /></Link><Link href="/portfolio" className="button button-outline">Ver portfólio <ArrowDownRight size={17} /></Link></div><div className="hero-note"><span><Circle size={8} fill="currentColor" /> Disponível para novos projectos</span><span>Luanda · Angola</span></div></div>
+        <div className="hero-stage"><div className="hero-stage-label"><span>FAMU / 001</span><span>IDEIA → FORMA</span></div><div className="hero-core"><div className="core-ring ring-one" /><div className="core-ring ring-two" /><div className="core-glow" /><span className="core-word">FAMU</span><span className="core-sub">STUDIO</span><div className="core-cross">+</div></div><div className="floating-card floating-card--top"><span className="floating-index">01</span><small>IDENTIDADE<br />VISUAL</small><MoveUpRight size={15} /></div><div className="floating-card floating-card--right"><span className="floating-index">04</span><small>EXCEL<br />&amp; DADOS</small><BarChartArt /></div><div className="floating-card floating-card--bottom"><span className="floating-index">08</span><small>WEBSITES<br />DIGITAIS</small><span className="floating-arrow">↗</span></div><div className="hero-stage-foot"><span>Design</span><span>Dados</span><span>Digital</span><span>+</span></div></div>
+      </div><div className="hero-scroll"><span>Scroll para explorar</span><i /></div>
+    </section>
 
-  return (
-    <div className="min-h-screen flex flex-col">
-      <main>
-        {/* Example: lucide-react for icons */}
-        <Loader2 className="animate-spin" />
-        Example Page
-        {/* Example: Streamdown for markdown rendering */}
-        <Streamdown>Any **markdown** content</Streamdown>
-        <Button variant="default">Example Button</Button>
-      </main>
-    </div>
-  );
+    <section className="credibility-strip"><div className="container credibility-inner"><span className="credibility-label">Uma equipa para<br /><em>diferentes necessidades.</em></span><div className="credibility-items"><span>Design <i>+</i></span><span>Dados <i>+</i></span><span>Apresentações <i>+</i></span><span>Automação <i>+</i></span><span>Branding <i>+</i></span><span>Digital <i>+</i></span></div></div></section>
+
+    <section className="services-section section-pad" id="servicos"><div className="container"><SectionIntro eyebrow="O que fazemos" title="Uma só equipa para transformar diferentes necessidades." text="Do primeiro rascunho ao sistema que organiza o trabalho. Escolha um ponto de partida — a solução pode crescer a partir daí." action={<Link href="/servicos" className="text-link section-action">Ver todos os serviços <ArrowUpRight size={16} /></Link>} /><div className="service-grid">{featuredServices.map((service) => <ServiceCard key={service.slug} service={service} featured />)}</div><div className="services-foot"><span>{credibilityLine}</span><Link href="/servicos" className="button button-ghost">Explorar o catálogo <ChevronRight size={15} /></Link></div></div></section>
+
+    <section className="statement-section"><div className="container statement-inner"><span className="section-marker">02 / 06</span><div className="statement-copy"><span className="eyebrow">Mais do que estética</span><h2>Um bom design não serve apenas para ficar bonito.</h2><p>Deve comunicar, organizar, facilitar decisões e tornar o trabalho mais eficiente.</p><div className="pillar-grid"><div><strong>01</strong><span>Design</span><small>Forma com intenção.</small></div><div><strong>02</strong><span>Clareza</span><small>Menos ruído, mais sentido.</small></div><div><strong>03</strong><span>Tecnologia</span><small>Ferramentas que trabalham.</small></div><div><strong>04</strong><span>Resultado</span><small>Próximos passos concretos.</small></div></div></div><div className="statement-art"><div className="orbit orbit-a" /><div className="orbit orbit-b" /><div className="orbit orbit-c" /><span className="orbit-center">+</span></div></div></section>
+
+    <section className="portfolio-section section-pad" id="portfolio"><div className="container"><SectionIntro eyebrow="Trabalhos em destaque" title="O visual é só o começo." text="Uma selecção de composições demonstrativas que mostram como pensamos sistemas, narrativas e interfaces." action={<Link href="/portfolio" className="text-link section-action">Ver portfólio completo <ArrowUpRight size={16} /></Link>} /><div className="portfolio-mosaic">{featuredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div></div></section>
+
+    <section className="data-feature-section"><div className="container data-feature-grid"><div className="data-feature-copy"><span className="eyebrow"><Sparkles size={13} /> Diferencial FAMU</span><h2>Dados que deixam de ser apenas números.</h2><p>Quando a informação está espalhada, as decisões ficam mais lentas. Criamos dashboards, mapas de controlo e ferramentas Excel que tornam o estado do trabalho visível.</p><Link href="/servicos/excel-dashboards" className="button button-primary">Quero um dashboard <ArrowUpRight size={16} /></Link><div className="data-feature-tags"><span><Check size={13} /> KPIs</span><span><Check size={13} /> Filtros</span><span><Check size={13} /> Automatização</span></div></div><div className="data-feature-visual"><MiniDashboard /></div></div></section>
+
+    <section className="solutions-section section-pad" id="solucoes"><div className="container"><div className="audience-grid"><div className="audience-panel audience-business"><div className="audience-panel-top"><span className="eyebrow">Para empresas</span><span>01 / 02</span></div><h2>{b2bTitle}</h2><p>Apresentações, dashboards, ferramentas, materiais e presença digital para equipas que precisam de clareza para avançar.</p><div className="audience-list">{b2bServices.map((item) => <span key={item}><Layers3 size={14} /> {item}</span>)}</div><Link href="/contacto" className="text-link">Solicitar solução empresarial <ArrowUpRight size={15} /></Link><div className="audience-watermark">B2B</div></div><div className="audience-panel audience-professional"><div className="audience-panel-top"><span className="eyebrow">Para profissionais</span><span>02 / 02</span></div><h2>{professionalTitle}</h2><p>CVs, portfólios e apresentações para quem quer que a sua experiência seja percebida com mais intenção.</p><div className="audience-list">{professionalServices.map((item) => <span key={item}><Layers3 size={14} /> {item}</span>)}</div><Link href="/servicos/portfolios" className="text-link">Criar o meu portfólio <ArrowUpRight size={15} /></Link><div className="audience-watermark">YOU</div></div></div></div></section>
+
+    <section className="process-section section-pad" id="processo"><div className="container"><SectionIntro eyebrow="Como funciona" title="Uma forma simples de começar." text="O processo pode adaptar-se ao projecto, mas nunca começa sem entender o problema." /><ProcessLine /><div className="process-grid">{processSteps.map((step) => <div key={step.number} className="process-step"><span>{step.number}</span><h3>{step.title}</h3><p>{step.text}</p></div>)}</div></div></section>
+
+    <section className="presentation-section"><div className="container presentation-grid"><div className="presentation-visual"><PresentationStack /></div><div className="presentation-copy"><span className="eyebrow">Informação em movimento</span><h2>Apresentações que dão espaço ao que importa.</h2><p>Uma boa apresentação não despeja informação. Cria ritmo, hierarquia e uma linha de raciocínio que se consegue acompanhar.</p><Link href="/servicos/apresentacoes" className="button button-outline">Explorar apresentações <ArrowUpRight size={16} /></Link></div></div></section>
+
+    <section className="selection-preview section-pad"><div className="container selection-preview-inner"><div><span className="eyebrow">A sua solução, à sua medida</span><h2>Não precisa de saber exactamente o nome do que procura.</h2><p>Explore, guarde o que lhe interessa, combine possibilidades e envie um pedido com contexto.</p></div><div className="selection-steps"><div className="selection-step active"><b>01</b><strong>Explorar</strong><span>Descubra</span></div><div className="selection-arrow">→</div><div className="selection-step"><b>02</b><strong>Seleccionar</strong><span>Guarde</span></div><div className="selection-arrow">→</div><div className="selection-step"><b>03</b><strong>Solicitar</strong><span>Converse</span></div></div><Link href="/servicos" className="text-link">Começar a explorar <ArrowUpRight size={15} /></Link></div></section>
+
+    <section className="final-cta-section"><div className="container final-cta-inner"><div className="final-cta-number">06 <span>/ 06</span></div><span className="eyebrow">Próximo passo</span><h2>{finalCtaTitle}</h2><p>{finalCtaText}</p><Link href="/contacto" className="button button-primary button-large">Começar um projecto <ArrowUpRight size={18} /></Link><div className="final-cta-orbit" /></div></section>
+
+    <div className="home-utility"><div className="container"><span>FAMU STUDIO</span><span>IDEIAS QUE GANHAM FORMA.</span><span>DESIGN / DADOS / DIGITAL</span></div></div>
+  </div>;
 }
