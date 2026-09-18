@@ -5,6 +5,7 @@ import { useSelection } from "@/contexts/SelectionContext";
 import { brand, footerLinks, navLinks, quoteCta } from "@/lib/famu-data";
 import BriefingDialog from "@/components/BriefingDialog";
 import FamuAssistant from "@/components/FamuAssistant";
+import SocialLinks from "@/components/SocialLinks";
 
 export default function FamuShell({ children }: { children: ReactNode }) {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function FamuShell({ children }: { children: ReactNode }) {
           </Link>
 
           <nav className={`desktop-nav ${mobileOpen ? "mobile-nav-open" : ""}`} aria-label="Navegação principal">
+            <Link href="/" className={location === "/" ? "nav-link active nav-home" : "nav-link nav-home"} onClick={() => setMobileOpen(false)} aria-label="Ir para Home"><span className="home-icon">⌂</span><span>Home</span></Link>
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href} className={location === link.href ? "nav-link active" : "nav-link"} onClick={() => setMobileOpen(false)}>{link.label}</Link>
             ))}
@@ -62,7 +64,7 @@ export default function FamuShell({ children }: { children: ReactNode }) {
           <div className="footer-brand"><Link href="/" className="brand-lockup"><span className="brand-mark">F</span><span className="brand-name">FAMU<span>STUDIO</span></span></Link><p>{brand.description}</p></div>
           <div className="footer-statement"><span>01 / 01</span><p>Da ideia à forma.<br /><em>Com intenção.</em></p></div>
           <div className="footer-links"><span className="eyebrow">Explorar</span>{footerLinks.map((link) => <Link key={link.href} href={link.href}>{link.label}</Link>)}</div>
-          <div className="footer-contact"><span className="eyebrow">Começar</span><button onClick={() => setBriefingOpen(true)}>{quoteCta} <ArrowUpRight size={16} /></button><small>{brand.whatsapp} · {brand.email}</small></div>
+          <div className="footer-contact"><span className="eyebrow">Começar</span><button onClick={() => setBriefingOpen(true)}>{quoteCta} <ArrowUpRight size={16} /></button><small>{brand.whatsapp} · {brand.email}</small><SocialLinks /></div>
         </div>
         <div className="container footer-bottom"><span>© {new Date().getFullYear()} FAMU STUDIO</span><span>Ideias que ganham forma.</span><span>Conteúdo demonstrativo pronto para actualização.</span></div>
       </footer>

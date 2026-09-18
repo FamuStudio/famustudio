@@ -17,6 +17,7 @@ export type Project = {
   description: string;
   accent: string;
   visual: "dashboard" | "brand" | "slides" | "portfolio" | "website" | "social";
+  images?: string[];
 };
 
 export const brand = {
@@ -111,12 +112,12 @@ export const services: Service[] = [
 ];
 
 export const projects: Project[] = [
-  { slug: "sistema-de-controlo", title: "Sistema de controlo", category: "Excel & Dashboards", type: "Direcção de interface", description: "Uma demonstração de como indicadores, filtros e estados podem transformar dados numa ferramenta de decisão.", accent: "lime", visual: "dashboard" },
-  { slug: "brand-board", title: "Brand board", category: "Branding", type: "Sistema visual", description: "Composição demonstrativa de paleta, tipografia e aplicações para uma identidade com presença.", accent: "violet", visual: "brand" },
-  { slug: "apresentacao-institucional", title: "Apresentação institucional", category: "Apresentações", type: "Narrativa visual", description: "Uma estrutura editorial para apresentar uma organização com ritmo, hierarquia e clareza.", accent: "orange", visual: "slides" },
-  { slug: "portfolio-profissional", title: "Portfólio profissional", category: "Portfólios", type: "Posicionamento", description: "Exemplo de uma apresentação profissional que transforma percurso em argumento visual.", accent: "blue", visual: "portfolio" },
-  { slug: "presenca-digital", title: "Presença digital", category: "Websites", type: "Experiência web", description: "Uma interface digital com foco em descoberta, confiança e contacto sem ruído.", accent: "cyan", visual: "website" },
-  { slug: "kit-social-media", title: "Kit social media", category: "Social Media", type: "Sistema de conteúdo", description: "Um conjunto demonstrativo de peças que mantém consistência entre formatos e momentos.", accent: "pink", visual: "social" },
+  { slug: "sistema-de-controlo", title: "Sistema de controlo", category: "Excel & Dashboards", type: "Direcção de interface", description: "Uma demonstração de como indicadores, filtros e estados podem transformar dados numa ferramenta de decisão.", accent: "lime", visual: "dashboard", images: ["https://res.cloudinary.com/v4vcilys/image/upload/v1789735955/Menu_novo_Mednet_pratos_ii.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789735957/Menu_novo_Mednet_bebidas.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789735961/Menu_novo_Mednet_Capa.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789735973/Menu_novo_Mednet_pratos.jpg"] },
+  { slug: "brand-board", title: "Brand board", category: "Branding", type: "Sistema visual", description: "Composição demonstrativa de paleta, tipografia e aplicações para uma identidade com presença.", accent: "violet", visual: "brand", images: ["https://res.cloudinary.com/v4vcilys/image/upload/v1789736028/FLYER_MAURO_cmyk.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736070/FLYER_NOVO_SERMAVEL.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736081/flyer_sermavel_FECHADO.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736130/flyer_sermavelgaa.jpg"] },
+  { slug: "apresentacao-institucional", title: "Apresentação institucional", category: "Apresentações", type: "Narrativa visual", description: "Uma estrutura editorial para apresentar uma organização com ritmo, hierarquia e clareza.", accent: "orange", visual: "slides", images: ["https://res.cloudinary.com/v4vcilys/image/upload/v1789736245/flyer_snack_mednet09.03.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736273/007423.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736323/copq_f.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736420/NOVO_COVITE_VIDAL.jpg"] },
+  { slug: "portfolio-profissional", title: "Portfólio profissional", category: "Portfólios", type: "Posicionamento", description: "Exemplo de uma apresentação profissional que transforma percurso em argumento visual.", accent: "blue", visual: "portfolio", images: ["https://res.cloudinary.com/v4vcilys/image/upload/v1789736476/Nosso_S%C3%ADtio1.2.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736499/Nosso_cantinho_outro_churrasco.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736589/padaria_que_p%C3%A3o_black_white.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736595/padaria_que_p%C3%A3o2.jpg"] },
+  { slug: "presenca-digital", title: "Presença digital", category: "Websites", type: "Experiência web", description: "Uma interface digital com foco em descoberta, confiança e contacto sem ruído.", accent: "cyan", visual: "website", images: ["https://res.cloudinary.com/v4vcilys/image/upload/v1789736662/flyer_jomilda_final.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736674/Menu_black_c%C3%B3pia.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736687/Menu-Recuperado.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736694/ANONIMOS2.1.jpg"] },
+  { slug: "kit-social-media", title: "Kit social media", category: "Social Media", type: "Sistema de conteúdo", description: "Um conjunto demonstrativo de peças que mantém consistência entre formatos e momentos.", accent: "pink", visual: "social", images: ["https://res.cloudinary.com/v4vcilys/image/upload/v1789736699/Capturarfe.png", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736775/lona_Medneta.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736777/maquete_rui_soft_prefinal.jpg", "https://res.cloudinary.com/v4vcilys/image/upload/v1789736781/maquete_rui_soft.jpg"] },
 ];
 
 export const categories = ["Todos", "Design", "Branding", "Excel & Dashboards", "Apresentações", "Portfólios", "Websites", "Social Media"];
@@ -178,7 +179,7 @@ export const contactConfig = {
   whatsapp: brand.whatsapp,
   email: brand.email,
   phone: "+244 926 612 706",
-  instagram: "https://www.tiktok.com/@famustudio",
+  tiktok: "https://www.tiktok.com/@famustudio",
   facebook: "https://web.facebook.com/profile.php?id=100064003177135",
   linkedin: "",
   location: "Malange | Angola",
