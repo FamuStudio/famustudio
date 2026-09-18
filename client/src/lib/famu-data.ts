@@ -23,8 +23,8 @@ export const brand = {
   name: "FAMU STUDIO",
   slogan: "Ideias que ganham forma.",
   description: "Design, dados e soluções digitais para pessoas e empresas.",
-  whatsapp: "",
-  email: "",
+  whatsapp: "+244 926 612 706",
+  email: "famustudio@gmail.com",
 };
 
 export const services: Service[] = [
@@ -177,11 +177,18 @@ export const faqs = [
 export const contactConfig = {
   whatsapp: brand.whatsapp,
   email: brand.email,
-  instagram: "",
-  facebook: "",
+  phone: "+244 926 612 706",
+  instagram: "https://www.tiktok.com/@famustudio",
+  facebook: "https://web.facebook.com/profile.php?id=100064003177135",
   linkedin: "",
-  location: "",
+  location: "Malange | Angola",
 };
+
+export const testimonials = [
+  { quote: "A FAMU ajudou-nos a transformar uma ideia dispersa numa apresentação clara, profissional e fácil de defender.", name: "Cliente empresarial", role: "Direcção de projecto", context: "Apresentação institucional" },
+  { quote: "Finalmente consigo mostrar o meu trabalho com a mesma qualidade com que o entrego. O portfólio passou a trabalhar por mim.", name: "Profissional independente", role: "Consultoria e serviços", context: "Portfólio profissional" },
+  { quote: "O dashboard trouxe ordem aos dados e tornou as conversas da equipa muito mais objectivas.", name: "Equipa de operações", role: "Pequena empresa", context: "Excel & dashboards" },
+];
 
 export const suggestedCombinations = [
   { title: "Quero melhorar a minha marca", items: ["Identidade visual", "Kit social media", "Website"] },

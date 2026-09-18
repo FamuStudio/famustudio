@@ -2,6 +2,7 @@ import { ArrowDownRight, ArrowUpRight, Check, ChevronRight, Circle, Layers3, Mou
 import { Link } from "wouter";
 import { BarChartArt, LineChartArt, MiniDashboard, PresentationStack, ProcessLine } from "@/components/ProjectVisual";
 import { ProjectCard, SectionIntro, ServiceCard } from "@/components/FamuCards";
+import TestimonialsCarousel from "@/components/TestimonialsCarousel";
 import { useSelection } from "@/contexts/SelectionContext";
 import { b2bServices, b2bTitle, brandPill, credibilityLine, finalCtaText, finalCtaTitle, heroDescription, heroHeadline, professionalServices, professionalTitle, processSteps, projects, services } from "@/lib/famu-data";
 
@@ -26,6 +27,8 @@ export default function Home() {
     <section className="statement-section"><div className="container statement-inner"><span className="section-marker">02 / 06</span><div className="statement-copy"><span className="eyebrow">Mais do que estética</span><h2>Um bom design não serve apenas para ficar bonito.</h2><p>Deve comunicar, organizar, facilitar decisões e tornar o trabalho mais eficiente.</p><div className="pillar-grid"><div><strong>01</strong><span>Design</span><small>Forma com intenção.</small></div><div><strong>02</strong><span>Clareza</span><small>Menos ruído, mais sentido.</small></div><div><strong>03</strong><span>Tecnologia</span><small>Ferramentas que trabalham.</small></div><div><strong>04</strong><span>Resultado</span><small>Próximos passos concretos.</small></div></div></div><div className="statement-art"><div className="orbit orbit-a" /><div className="orbit orbit-b" /><div className="orbit orbit-c" /><span className="orbit-center">+</span></div></div></section>
 
     <section className="portfolio-section section-pad" id="portfolio"><div className="container"><SectionIntro eyebrow="Trabalhos em destaque" title="O visual é só o começo." text="Uma selecção de composições demonstrativas que mostram como pensamos sistemas, narrativas e interfaces." action={<Link href="/portfolio" className="text-link section-action">Ver portfólio completo <ArrowUpRight size={16} /></Link>} /><div className="portfolio-mosaic">{featuredProjects.map((project, index) => <ProjectCard key={project.slug} project={project} index={index} />)}</div></div></section>
+
+    <TestimonialsCarousel />
 
     <section className="data-feature-section"><div className="container data-feature-grid"><div className="data-feature-copy"><span className="eyebrow"><Sparkles size={13} /> Diferencial FAMU</span><h2>Dados que deixam de ser apenas números.</h2><p>Quando a informação está espalhada, as decisões ficam mais lentas. Criamos dashboards, mapas de controlo e ferramentas Excel que tornam o estado do trabalho visível.</p><Link href="/servicos/excel-dashboards" className="button button-primary">Quero um dashboard <ArrowUpRight size={16} /></Link><div className="data-feature-tags"><span><Check size={13} /> KPIs</span><span><Check size={13} /> Filtros</span><span><Check size={13} /> Automatização</span></div></div><div className="data-feature-visual"><MiniDashboard /></div></div></section>
 
